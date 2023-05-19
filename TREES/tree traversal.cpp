@@ -25,22 +25,28 @@ void printInorder(struct Node* root){
     if(root==NULL)
     return;
     
-    printInorder(root->left);
-    cout<<root->data<<" ";
-    printInorder(root->right);
+    printInorder(root->left); //left subtree
+    cout<<root->data<<" "; //root
+    printInorder(root->right); //right subtree
     return; //can skip this return statement
-
 }
 
 void printPreorder(struct Node* root){
     if(root==NULL)
     return;
     
-    cout<<root->data<<" ";
+    cout<<root->data<<" ";  //root
+    printPreorder(root->left); //left subtree
+    printPreorder(root->right); //right subtree
+}
+
+void printPostorder(struct Node* root){
+    if(root==NULL)
+    return;
     
-    printPreorder(root->left);
-    
-    printPreorder(root->right);
+    printPostorder(root->left); //left subtree
+    printPostorder(root->right); //right subtree
+    cout<<root->data<<" "; //root
 }
 
 
@@ -57,11 +63,12 @@ int main() {
 	cout<<endl;
 	cout<<"Preorder : ";
 	printPreorder(root);
-// 	cout<<endl;
-// 	cout<<"Postorder : ";
-// 	printPostorder(root);
+	cout<<endl;
+	cout<<"Postorder : ";
+	printPostorder(root);
 	
 	
 	return 0;
 }
+
 
