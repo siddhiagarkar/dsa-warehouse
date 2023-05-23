@@ -13,18 +13,14 @@ struct Node{
     }
 };
 
-void inorder(struct Node* root, int h, vector<int> &v){
+int maxDepth(struct Node* root){
     if(root==NULL)
-    return;
+    return 0;
     
-    h++;
-    inorder(root->left, h, v);
-    v.push_back(h);
-    // cout<<h<<" ";
-
-    inorder(root->right, h, v);
-    h--;
+    int lh = maxDepth(root->left);
+    int rh = maxDepth(root->right);
     
+    return 1+max(lh, rh);
 }
 
 int main() {
@@ -33,13 +29,8 @@ int main() {
 	root->left = new Node(2);
 	root->right = new Node(3);
 	root->right->right = new Node(5);
-	vector<int> v;
-	inorder(root, 0, v);
 	
-// 	for(auto el: v)
-// 	cout<<el<<" ";
-    int maxht = *max_element(v.begin(), v.end());
-    cout<<maxht<<endl;
-	
+	cout<<maxDepth(root)<<endl;
+
 	return 0;
 }
