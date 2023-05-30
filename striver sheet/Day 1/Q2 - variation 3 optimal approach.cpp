@@ -4,10 +4,9 @@ vector<vector<long long int>> printPascal(int n)
 {
   // Write your code here.
   vector<vector<long long int>> pasc;
-  vector<long long int> vec; //long long int
 
   for(int i=0; i<n; i++){
-    vec.clear();
+    vector<long long int> vec; //long long int
     for(int j=0; j<=i; j++){
       if(j==0 || j==i)
       vec.push_back(1);
@@ -20,7 +19,7 @@ vector<vector<long long int>> printPascal(int n)
   return pasc;
 }
 
-//TC = O(n^2)
+//TC = O(n^2), where n = number of rows(given)
 
-//SC = O(n^2)
+//SC = In this case, we are only using space to store the answer. That is why space complexity can still be considered as O(1).
 
