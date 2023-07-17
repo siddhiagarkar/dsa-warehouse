@@ -16,20 +16,17 @@ int maxPathSumUtil(struct Node* root, int &ans){
     if(root==NULL)
     return 0;
     
-    int left = maxPathSumUtil(root->left, ans);
-    int right = maxPathSumUtil(root->right, ans);
+    int left = max(0, maxPathSumUtil(root->left, ans)); //negative hua, toh 0
+    int right = max(0, maxPathSumUtil(root->right, ans)); //negative hua, toh 0
     
-    int nodeMax = max(max(root->data, root->data + left), 
-                  max(root->data + right, root->data + left + right));
-    
-    ans = max(ans, nodeMax);
-    int singlePathSum = max(root->data, max(root->data + left, root->data + right));
-    return singlePathSum;
+    ans = max(ans, root->data + left + right);
+    return max(left, right) + root->data;
 }
 
 int maxPathSum(struct Node* root){
     int ans = INT_MIN;
-    ans = maxPathSumUtil(root, ans);
+    // ans = maxPathSumUtil(root, ans);
+    maxPathSumUtil(root, ans);
     return ans;
 }
 
